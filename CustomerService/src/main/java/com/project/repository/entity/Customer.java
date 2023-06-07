@@ -22,6 +22,7 @@ public class Customer extends BaseEntity{
     private String identityNumber;
     private String customerNo;
     private int age;
+    private Long authId;
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Address address;
 }

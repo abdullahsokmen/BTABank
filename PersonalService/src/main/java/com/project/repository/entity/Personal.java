@@ -22,6 +22,7 @@ public class Personal extends BaseEntity{
     private String personalNo;
     private String phone;
     private String identityNumber;
+    private Long authId;
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Address address;
