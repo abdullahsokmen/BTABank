@@ -3,4 +3,5 @@ include 'CustomerService'
 include 'CustomerService'
 include 'PersonalService'
 include 'AuthMicroService'
+include 'CustomerMicroService'
 

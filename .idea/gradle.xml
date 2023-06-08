@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AuthMicroService" />
+            <option value="$PROJECT_DIR$/CustomerMicroService" />
             <option value="$PROJECT_DIR$/CustomerService" />
             <option value="$PROJECT_DIR$/PersonalService" />
           </set>

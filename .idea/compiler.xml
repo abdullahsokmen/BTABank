@@ -10,6 +10,7 @@
         </processorPath>
         <module name="BTABank.CustomerService.main" />
         <module name="BTABank.AuthMicroService.main" />
+        <module name="com.project.BTABank.CustomerMicroService.main" />
         <module name="BTABank.main" />
         <module name="BTABank.PersonalService.main" />
       </profile>

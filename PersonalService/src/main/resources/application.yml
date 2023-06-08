@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 9091
 
 spring:
   rabbitmq:
@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: ${PGPASSWORD}
-    url: jdbc:postgresql://localhost:5432/BTAAuthDB
+    url: jdbc:postgresql://localhost:5432/BTAPersonnelDB
   jpa:
     hibernate:
       ddl-auto: update
