@@ -4,10 +4,11 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.group.exception.AuthManagerException;
-import com.group.exception.EErrorType;
-import com.group.repository.entity.ERole;
-import com.group.repository.entity.EStatus;
+
+import com.project.exception.AuthServiceException;
+import com.project.exception.EErrorType;
+import com.project.repository.entity.ERole;
+import com.project.repository.entity.EStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +72,7 @@ public class JwtTokenManager {
             }
         }catch (Exception exception){
             System.out.println(exception.getMessage());
-            throw new AuthManagerException(EErrorType.INVALID_TOKEN);
+            throw new AuthServiceException(EErrorType.INVALID_TOKEN);
         }
         return true;
     }
@@ -82,12 +83,12 @@ public class JwtTokenManager {
             JWTVerifier verifier=JWT.require(algorithm).withIssuer(issuer).withAudience(audience).build();
             DecodedJWT decodedJWT=verifier.verify(token);
             if (decodedJWT==null){
-                throw new AuthManagerException(EErrorType.NOT_DECODED);
+                throw new AuthServiceException(EErrorType.INVALID_TOKEN);
             }
             Long id=decodedJWT.getClaim("id").asLong();
             return Optional.of(id);
         }catch (Exception exception){
-            throw new AuthManagerException(EErrorType.INVALID_TOKEN);
+            throw new AuthServiceException(EErrorType.INVALID_TOKEN);
         }
 
     }

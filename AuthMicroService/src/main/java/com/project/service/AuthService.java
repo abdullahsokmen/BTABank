@@ -22,7 +22,7 @@ public class AuthService extends ServiceManager<Auth,Long> {
 
     public Long register(RegisterRequestDto dto) {
         Auth auth= IAuthMapper.INSTANCE.toAuth(dto);
-        auth.setPassword(passwordEncoder.encode(dto.getPassword()));
+        auth.setPassword(dto.getPassword());
         auth.setRole(ERole.valueOf(dto.getUserRole()));
         save(auth);
         return auth.getId();

@@ -18,6 +18,7 @@ public class PersonalService extends ServiceManager<Personal,Long> {
 
     public Boolean savePersonal(PersonalSaveRequestDto dto) {
         Personal personal= IPersonalMapper.INSTANCE.toPersonal(dto);
+        save(personal);
         return true;
     }
 }

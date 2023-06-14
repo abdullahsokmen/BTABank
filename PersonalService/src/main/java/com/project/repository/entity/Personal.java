@@ -19,6 +19,7 @@ public class Personal extends BaseEntity{
     private Long id;
     private String name;
     private String surname;
+    private String email;
     private String personalNo;
     private String phone;
     private String identityNumber;
