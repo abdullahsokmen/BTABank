@@ -15,4 +15,5 @@ public class PersonalSaveRequestDto {
     private String phone;
     private String email;
     private String identityNumber;
+    private AddressCreateRequestDto address;
 }

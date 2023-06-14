@@ -20,6 +20,7 @@ public class Personal extends BaseEntity{
     private String name;
     private String surname;
     private String email;
+    private String password;
     private String personalNo;
     private String phone;
     private String identityNumber;
@@ -27,4 +28,7 @@ public class Personal extends BaseEntity{
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Address address;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private EStatus status=EStatus.ACTIVE;
 }

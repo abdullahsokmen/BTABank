@@ -5,10 +5,8 @@ import com.project.service.PersonalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import static com.project.constants.EndPoints.*;
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +19,11 @@ public class PersonalController {
         public ResponseEntity<Boolean>savePersonal(@RequestBody PersonalSaveRequestDto dto){
                 return ResponseEntity.ok(personalService.savePersonal(dto));
         }
+        @PutMapping(DELETE)
+        public ResponseEntity<Boolean>deletePersonal(@RequestParam Long id){
+                return ResponseEntity.ok(personalService.deletePersonalById(id));
+        }
+
 
 
 }
