@@ -2,6 +2,7 @@ package com.project.mapper;
 
 import com.project.dto.request.PersonalSaveRequestDto;
 import com.project.dto.request.RegisterRequestDto;
+import com.project.dto.response.PersonalDetailsResponseDto;
 import com.project.repository.entity.Personal;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -13,4 +14,5 @@ public interface IPersonalMapper {
 
     Personal toPersonal(final PersonalSaveRequestDto dto);
     RegisterRequestDto toRegisterRequestDto(final Personal personal);
+    PersonalDetailsResponseDto fromPersonal(final Personal personal);
 }
