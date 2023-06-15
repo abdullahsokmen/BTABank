@@ -1,6 +1,7 @@
 package com.project.service;
 
 
+import com.project.rabbitmq.model.CustomerPasswordSenderModel;
 import com.project.rabbitmq.model.PersonalPasswordSenderModel;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,6 +15,14 @@ public class MailSenderService {
     private final JavaMailSender javaMailSender;
 
     public void sendPersonalPassword(PersonalPasswordSenderModel model){
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setFrom("${mailUsername}");
+        mailMessage.setTo(model.getEmail());
+        mailMessage.setSubject("Password");
+        mailMessage.setText("Your password : "+model.getPassword());
+        javaMailSender.send(mailMessage);
+    }
+    public void sendCustomerPassword(CustomerPasswordSenderModel model){
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("${mailUsername}");
         mailMessage.setTo(model.getEmail());
