@@ -12,7 +12,7 @@ public class CustomerPasswordProducer {
     private String customerDirectExchange = "customer-direct-exchange";
     private String customerPasswordBindingKey = "customer-password-binding-key";
 
-    public void sendPersonalPassword(CustomerPasswordSenderModel model){
+    public void sendCustomerPassword(CustomerPasswordSenderModel model){
         rabbitTemplate.convertAndSend(customerDirectExchange,customerPasswordBindingKey,model);
     }
 }

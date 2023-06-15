@@ -12,11 +12,11 @@ public class RabbitmqConfig {
     private String customerPasswordQueue = "customer-password-queue";
 
     @Bean
-    DirectExchange personalDirectExchange(){
+    DirectExchange customerDirectExchange(){
         return new DirectExchange(customerDirectExchange);
     }
     @Bean
-    Queue personalPasswordQueue(){
+    Queue customerPasswordQueue(){
         return new Queue(customerPasswordQueue);
     }
     @Bean
