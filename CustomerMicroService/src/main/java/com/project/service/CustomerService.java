@@ -2,6 +2,8 @@ package com.project.service;
 
 import com.project.dto.request.CustomerSaveRequestDto;
 import com.project.dto.request.RegisterRequestDto;
+import com.project.exception.CustomerServiceException;
+import com.project.exception.EErrorType;
 import com.project.manager.IAuthManager;
 import com.project.mapper.ICustomerMapper;
 import com.project.repository.ICustomerRepository;
@@ -10,6 +12,8 @@ import com.project.utility.Generator;
 import com.project.utility.ServiceManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomerService extends ServiceManager<Customer,Long> {
@@ -34,6 +38,15 @@ public class CustomerService extends ServiceManager<Customer,Long> {
         Long authId=authManager.register(register).getBody();
         customer.setAuthId(authId);
         save(customer);
+        return true;
+    }
+
+    public Boolean deleteCustomer(Long id) {
+        Optional<Customer>customer=findById(id);
+        if (customer.isEmpty())
+            throw new CustomerServiceException(EErrorType.CUSTOMER_NOT_EXIST);
+        deleteById(id);
+        authManager.deleteByAuthId(customer.get().getAuthId());
         return true;
     }
 }

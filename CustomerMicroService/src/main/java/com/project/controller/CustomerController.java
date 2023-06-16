@@ -4,10 +4,8 @@ import com.project.dto.request.CustomerSaveRequestDto;
 import com.project.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import static com.project.constants.EndPoints.*;
 @RestController
 @RequiredArgsConstructor
@@ -20,5 +18,10 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.saveCustomer(dto));
 
     }
+    @DeleteMapping(DELETE)
+    public ResponseEntity<Boolean>deleteCustomer(@RequestParam Long id){
+        return ResponseEntity.ok(customerService.deleteCustomer(id));
+    }
+
 
 }

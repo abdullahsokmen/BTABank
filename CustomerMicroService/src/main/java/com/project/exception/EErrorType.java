@@ -26,7 +26,8 @@ public enum EErrorType {
 
     EMAIL_ALREADY_TAKEN(3000,"Email already taken", BAD_REQUEST),
     USER_NOT_ACTIVE(1105,"User not active", BAD_REQUEST),
-    PERSONAL_NOT_EXIST(1105,"Personal not exist", BAD_REQUEST),
+    PERSONAL_NOT_EXIST(1106,"Personal not exist", BAD_REQUEST),
+    CUSTOMER_NOT_EXIST(1107,"Customer not exist", BAD_REQUEST),
 
 
 

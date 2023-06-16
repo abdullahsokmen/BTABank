@@ -3,6 +3,7 @@ package com.project.mapper;
 import com.project.dto.request.AddressCreateRequestDto;
 import com.project.dto.request.PersonalSaveRequestDto;
 import com.project.dto.request.RegisterRequestDto;
+import com.project.dto.response.PersonalDetailsResponseDto;
 import com.project.repository.entity.Address;
 import com.project.repository.entity.Personal;
 import javax.annotation.processing.Generated;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-14T21:50:29+0300",
+    date = "2023-06-16T20:18:29+0300",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -48,6 +49,23 @@ public class IPersonalMapperImpl implements IPersonalMapper {
         registerRequestDto.password( personal.getPassword() );
 
         return registerRequestDto.build();
+    }
+
+    @Override
+    public PersonalDetailsResponseDto fromPersonal(Personal personal) {
+        if ( personal == null ) {
+            return null;
+        }
+
+        PersonalDetailsResponseDto.PersonalDetailsResponseDtoBuilder personalDetailsResponseDto = PersonalDetailsResponseDto.builder();
+
+        personalDetailsResponseDto.name( personal.getName() );
+        personalDetailsResponseDto.surname( personal.getSurname() );
+        personalDetailsResponseDto.email( personal.getEmail() );
+        personalDetailsResponseDto.password( personal.getPassword() );
+        personalDetailsResponseDto.phone( personal.getPhone() );
+
+        return personalDetailsResponseDto.build();
     }
 
     protected Address addressCreateRequestDtoToAddress(AddressCreateRequestDto addressCreateRequestDto) {
