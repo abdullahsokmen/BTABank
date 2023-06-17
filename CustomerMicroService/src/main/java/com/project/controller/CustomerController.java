@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.dto.request.CustomerSaveRequestDto;
+import com.project.dto.request.CustomerUpdateRequestDto;
 import com.project.dto.response.CustomerDetailsResponseDto;
 import com.project.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,10 @@ public class CustomerController {
     @GetMapping(FINDALL)
     public ResponseEntity<List<CustomerDetailsResponseDto>>getCustomerList(){
         return ResponseEntity.ok(customerService.getAllCustomers());
+    }
+    @PutMapping(UPDATE)
+    public ResponseEntity<Boolean>updateCustomer(@RequestBody CustomerUpdateRequestDto dto){
+        return ResponseEntity.ok(customerService.updateCustomer(dto));
     }
 
 

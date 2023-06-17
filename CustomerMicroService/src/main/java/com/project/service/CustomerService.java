@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.project.dto.request.CustomerSaveRequestDto;
+import com.project.dto.request.CustomerUpdateRequestDto;
 import com.project.dto.request.RegisterRequestDto;
 import com.project.dto.response.CustomerDetailsResponseDto;
 import com.project.exception.CustomerServiceException;
@@ -9,6 +10,7 @@ import com.project.manager.IAuthManager;
 import com.project.mapper.IAddressMapper;
 import com.project.mapper.ICustomerMapper;
 import com.project.repository.ICustomerRepository;
+import com.project.repository.entity.Address;
 import com.project.repository.entity.Customer;
 import com.project.utility.Generator;
 import com.project.utility.ServiceManager;
@@ -56,5 +58,20 @@ public class CustomerService extends ServiceManager<Customer,Long> {
 
     public List<CustomerDetailsResponseDto> getAllCustomers() {
         return findAll().stream().map(x->ICustomerMapper.INSTANCE.fromCustomer(x)).toList();
+    }
+
+    public Boolean updateCustomer(CustomerUpdateRequestDto dto) {
+        Optional<Customer>customer=findById(dto.getId());
+        if (customer.isEmpty())
+            throw new CustomerServiceException(EErrorType.CUSTOMER_NOT_EXIST);
+        Customer toUpdate=customer.get();
+        Address newAddress=IAddressMapper.INSTANCE.toAddress(dto.getAddress());
+        toUpdate.setName(dto.getName());
+        toUpdate.setSurname(dto.getSurname());
+        toUpdate.setBirthPlace(dto.getBirthPlace());
+        toUpdate.setEmail(dto.getEmail());
+        toUpdate.setPhone(dto.getPhone());
+        update(toUpdate);
+        return true;
     }
 }
