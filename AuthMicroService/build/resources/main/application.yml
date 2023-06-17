@@ -14,7 +14,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/BTAAuthDB
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 jwt:
   secretkey: ${secretkey}
   audience: ${audience}
