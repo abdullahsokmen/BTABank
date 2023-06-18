@@ -4,6 +4,7 @@ import com.project.dto.request.CustomerSaveRequestDto;
 import com.project.dto.request.CustomerUpdateRequestDto;
 import com.project.dto.request.RegisterRequestDto;
 import com.project.dto.response.CustomerDetailsResponseDto;
+import com.project.dto.response.CustomerInfoResponseDto;
 import com.project.exception.CustomerServiceException;
 import com.project.exception.EErrorType;
 import com.project.manager.IAuthManager;
@@ -73,5 +74,16 @@ public class CustomerService extends ServiceManager<Customer,Long> {
         toUpdate.setPhone(dto.getPhone());
         update(toUpdate);
         return true;
+    }
+
+    public CustomerInfoResponseDto customerInfo(Long id) {
+        Optional<Customer>customer=findById(id);
+        if (customer.isEmpty())
+            throw new CustomerServiceException(EErrorType.CUSTOMER_NOT_EXIST);
+        return CustomerInfoResponseDto.builder()
+                .name(customer.get().getName())
+                .surname(customer.get().getSurname())
+                .id(customer.get().getId())
+                .build();
     }
 }

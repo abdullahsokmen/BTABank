@@ -3,6 +3,7 @@ package com.project.controller;
 import com.project.dto.request.CustomerSaveRequestDto;
 import com.project.dto.request.CustomerUpdateRequestDto;
 import com.project.dto.response.CustomerDetailsResponseDto;
+import com.project.dto.response.CustomerInfoResponseDto;
 import com.project.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,10 @@ public class CustomerController {
     @PutMapping(UPDATE)
     public ResponseEntity<Boolean>updateCustomer(@RequestBody CustomerUpdateRequestDto dto){
         return ResponseEntity.ok(customerService.updateCustomer(dto));
+    }
+    @PostMapping(CUSTOMERINFO)
+    public ResponseEntity<CustomerInfoResponseDto>getCustomerInfo(@RequestParam Long id){
+        return ResponseEntity.ok(customerService.customerInfo(id));
     }
 
 
