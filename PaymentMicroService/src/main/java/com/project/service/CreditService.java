@@ -32,7 +32,7 @@ public class CreditService extends ServiceManager<Credit,Long> {
             throw new PaymentServiceException(EErrorType.CUSTOMER_NOT_EXIST);
         Credit credit= ICreditPaymentMapper.INSTANCE.toCredit(dto);
         credit.setCreditType(ECreditType.valueOf(dto.getCreditType()));
-        //credit.setCurrency(Currency.valueOf(dto.getCurrency()));
+        credit.setCurrency(Currency.valueOf(dto.getCurrency()));
         credit.setAmount(dto.getAmount());
         credit.setCreditDetails(dto.getCreditDetails());
         credit.setExpiry(dto.getExpiry());

@@ -1,12 +1,12 @@
 package com.project.repository.entity;
 
+import com.project.repository.enums.Currency;
 import com.project.repository.enums.ECreditStatus;
 import com.project.repository.enums.ECreditType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.Currency;
 import java.util.Date;
 
 @Data
