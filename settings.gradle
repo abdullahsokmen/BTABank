@@ -6,4 +6,5 @@ include 'AuthMicroService'
 include 'CustomerMicroService'
 include 'MailModelService'
 include 'CustomerMicroService'
+include 'PaymentMicroService'
 
