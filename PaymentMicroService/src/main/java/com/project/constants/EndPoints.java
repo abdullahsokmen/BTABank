@@ -14,6 +14,8 @@ public class EndPoints {
     public static final String DELETE = "/delete";
     public static final String FINDALL = "/getall";
     public static final String CUSTOMERINFO = "/customerinfo";
+    public static final String CONFIRM = "/confirm";
+    public static final String DECLINE = "/decline";
 
 
 

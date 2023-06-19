@@ -29,6 +29,7 @@ public enum EErrorType {
     PERSONAL_NOT_EXIST(1106,"Personal not exist", BAD_REQUEST),
     CUSTOMER_NOT_EXIST(1107,"Customer not exist", BAD_REQUEST),
     CREDIT_NOT_EXIST(1108,"Credit not exist", BAD_REQUEST),
+    PENDING_STATUS_ERROR(1109,"This credit is currently not pending", BAD_REQUEST),
 
 
 

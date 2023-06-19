@@ -3,6 +3,7 @@ package com.project.mapper;
 import com.project.dto.request.AddressCreateRequestDto;
 import com.project.dto.request.CustomerSaveRequestDto;
 import com.project.dto.request.RegisterRequestDto;
+import com.project.dto.response.CustomerDetailsResponseDto;
 import com.project.repository.entity.Address;
 import com.project.repository.entity.Customer;
 import javax.annotation.processing.Generated;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-17T20:19:13+0300",
+    date = "2023-06-19T22:21:20+0300",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -49,6 +50,23 @@ public class ICustomerMapperImpl implements ICustomerMapper {
         registerRequestDto.password( customer.getPassword() );
 
         return registerRequestDto.build();
+    }
+
+    @Override
+    public CustomerDetailsResponseDto fromCustomer(Customer customer) {
+        if ( customer == null ) {
+            return null;
+        }
+
+        CustomerDetailsResponseDto.CustomerDetailsResponseDtoBuilder customerDetailsResponseDto = CustomerDetailsResponseDto.builder();
+
+        customerDetailsResponseDto.name( customer.getName() );
+        customerDetailsResponseDto.surname( customer.getSurname() );
+        customerDetailsResponseDto.email( customer.getEmail() );
+        customerDetailsResponseDto.password( customer.getPassword() );
+        customerDetailsResponseDto.phone( customer.getPhone() );
+
+        return customerDetailsResponseDto.build();
     }
 
     protected Address addressCreateRequestDtoToAddress(AddressCreateRequestDto addressCreateRequestDto) {

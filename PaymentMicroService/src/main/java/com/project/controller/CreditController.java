@@ -22,4 +22,16 @@ public class CreditController {
     public ResponseEntity<Boolean>updateCredit(@RequestBody UpdateCreditPaymentRequestDto dto){
         return ResponseEntity.ok(creditService.updateCreditPayment(dto));
     }
+    @PostMapping(CONFIRM)
+    public ResponseEntity<Boolean>confirmCredit(@RequestParam Long id){
+        return ResponseEntity.ok(creditService.confirmCreditPayment(id));
+    }
+    @PostMapping(DECLINE)
+    public ResponseEntity<Boolean>declineCredit(@RequestParam Long id){
+        return ResponseEntity.ok(creditService.declineCreditPayment(id));
+    }
+    @DeleteMapping(DELETE)
+    public ResponseEntity<Boolean>deleteCreditPayment(@RequestParam Long id){
+        return ResponseEntity.ok(creditService.deleteCreditPayment(id));
+    }
 }

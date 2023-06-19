@@ -10,10 +10,12 @@ import com.project.mapper.ICreditPaymentMapper;
 import com.project.repository.ICreditRepository;
 import com.project.repository.entity.Credit;
 import com.project.repository.enums.Currency;
+import com.project.repository.enums.ECreditStatus;
 import com.project.repository.enums.ECreditType;
 import com.project.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -39,6 +41,8 @@ public class CreditService extends ServiceManager<Credit,Long> {
         credit.setCreditDetails(dto.getCreditDetails());
         credit.setExpiry(dto.getExpiry());
         credit.setCustomerId(dto.getCustomerId());
+        credit.setCustomerName(customerDto.getName());
+        credit.setCustomerLastname(customerDto.getSurname());
         save(credit);
         return true;
     }
@@ -52,6 +56,37 @@ public class CreditService extends ServiceManager<Credit,Long> {
         toUpdate.setCreditDetails(dto.getCreditDetails());
         toUpdate.setExpiry(dto.getExpiry());
         update(toUpdate);
+        return true;
+    }
+
+    public Boolean confirmCreditPayment(Long id) {
+        Optional<Credit>credit=findById(id);
+        if (credit.isEmpty())
+            throw new PaymentServiceException(EErrorType.CREDIT_NOT_EXIST);
+        if (!credit.get().getStatus().equals(ECreditStatus.PENDING))
+            throw new PaymentServiceException(EErrorType.PENDING_STATUS_ERROR);
+        credit.get().setStatus(ECreditStatus.APPROVED);
+        credit.get().setConfirmDate(new Date());
+        update(credit.get());
+        return true;
+    }
+
+    public Boolean declineCreditPayment(Long id) {
+        Optional<Credit>credit=findById(id);
+        if (credit.isEmpty())
+            throw new PaymentServiceException(EErrorType.CREDIT_NOT_EXIST);
+        if (!credit.get().getStatus().equals(ECreditStatus.PENDING))
+            throw new PaymentServiceException(EErrorType.PENDING_STATUS_ERROR);
+        credit.get().setStatus(ECreditStatus.DECLINED);
+        update(credit.get());
+        return true;
+    }
+
+    public Boolean deleteCreditPayment(Long id) {
+        Optional<Credit>credit=findById(id);
+        if (credit.isEmpty())
+            throw new PaymentServiceException(EErrorType.CREDIT_NOT_EXIST);
+        delete(credit.get());
         return true;
     }
 }
