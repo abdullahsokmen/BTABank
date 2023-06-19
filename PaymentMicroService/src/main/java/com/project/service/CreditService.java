@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.project.dto.request.CreateCreditPaymentRequestDto;
+import com.project.dto.request.UpdateCreditPaymentRequestDto;
 import com.project.dto.response.CustomerInfoResponseDto;
 import com.project.exception.EErrorType;
 import com.project.exception.PaymentServiceException;
@@ -14,6 +15,7 @@ import com.project.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class CreditService extends ServiceManager<Credit,Long> {
@@ -38,6 +40,18 @@ public class CreditService extends ServiceManager<Credit,Long> {
         credit.setExpiry(dto.getExpiry());
         credit.setCustomerId(dto.getCustomerId());
         save(credit);
+        return true;
+    }
+
+    public Boolean updateCreditPayment(UpdateCreditPaymentRequestDto dto) {
+        Optional<Credit>credit=findById(dto.getId());
+        if (credit.isEmpty())
+            throw new PaymentServiceException(EErrorType.CREDIT_NOT_EXIST);
+        Credit toUpdate=credit.get();
+        toUpdate.setAmount(dto.getAmount());
+        toUpdate.setCreditDetails(dto.getCreditDetails());
+        toUpdate.setExpiry(dto.getExpiry());
+        update(toUpdate);
         return true;
     }
 }

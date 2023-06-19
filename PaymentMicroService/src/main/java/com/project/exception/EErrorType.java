@@ -28,6 +28,7 @@ public enum EErrorType {
     USER_NOT_ACTIVE(1105,"User not active", BAD_REQUEST),
     PERSONAL_NOT_EXIST(1106,"Personal not exist", BAD_REQUEST),
     CUSTOMER_NOT_EXIST(1107,"Customer not exist", BAD_REQUEST),
+    CREDIT_NOT_EXIST(1108,"Credit not exist", BAD_REQUEST),
 
 
 
