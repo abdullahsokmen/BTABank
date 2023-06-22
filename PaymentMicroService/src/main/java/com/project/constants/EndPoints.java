@@ -17,6 +17,7 @@ public class EndPoints {
     public static final String CUSTOMERINFO = "/customerinfo";
     public static final String CONFIRM = "/confirm";
     public static final String DECLINE = "/decline";
+    public static final String GETTRANSFERS = "/gettransfers";
 
 
 

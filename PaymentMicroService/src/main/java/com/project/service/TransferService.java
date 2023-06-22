@@ -2,6 +2,7 @@ package com.project.service;
 
 import com.project.dto.request.CreateTransferRequestDto;
 import com.project.dto.response.CustomerInfoResponseDto;
+import com.project.dto.response.TransferInfoResponseDto;
 import com.project.exception.EErrorType;
 import com.project.exception.PaymentServiceException;
 import com.project.manager.ICustomerManager;
@@ -14,6 +15,7 @@ import com.project.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class TransferService extends ServiceManager<Transfer,Long> {
@@ -42,5 +44,22 @@ public class TransferService extends ServiceManager<Transfer,Long> {
         transfer.setCustomerId(dto.getCustomerId());
         save(transfer);
         return true;
+    }
+
+    public TransferInfoResponseDto getTransfersByAccountNo(Long accountNo) {
+        Optional<Transfer>transfer=transferRepository.findByAccountNo(accountNo);
+        if (transfer.isEmpty())
+            throw new PaymentServiceException(EErrorType.TRANSFER_NOT_EXIST);
+        return TransferInfoResponseDto.builder()
+                .currency(transfer.get().getCurrency().toString())
+                .amount(transfer.get().getAmount())
+                .transferDetails(transfer.get().getTransferDetails())
+                .transferType(transfer.get().getTransferType().toString())
+                .accountNo(transfer.get().getAccountNo())
+                .takerAccountNo(transfer.get().getAccountNo())
+                .takerName(transfer.get().getTakerName())
+                .takerLastname(transfer.get().getTakerLastname())
+                .customerId(transfer.get().getCustomerId())
+                .build();
     }
 }

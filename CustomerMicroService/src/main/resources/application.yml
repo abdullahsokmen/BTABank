@@ -1,21 +1,8 @@
-server:
-  port: 9092
-
 spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: user
-    password: root
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: ${PGPASSWORD}
-    url: jdbc:postgresql://localhost:5432/BTACustomerDB
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-jwt:
-  secretkey: ${secretkey}
-  audience: ${audience}
-  issuer: ${issuer}
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: customer-micro-service-application

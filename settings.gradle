@@ -7,4 +7,6 @@ include 'CustomerMicroService'
 include 'MailModelService'
 include 'CustomerMicroService'
 include 'PaymentMicroService'
+include 'ConfigServerGit'
+include 'ConfigServerGit'
 

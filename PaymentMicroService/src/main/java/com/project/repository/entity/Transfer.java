@@ -24,7 +24,7 @@ public class Transfer extends BaseEntity{
     private String customerLastname;
     private Long customerId;
     @Builder.Default
-    private Date requestDate = new Date();
+    private Date transferDate = new Date();
     @Enumerated(EnumType.STRING)
     private Currency currency;
     private Double amount;
