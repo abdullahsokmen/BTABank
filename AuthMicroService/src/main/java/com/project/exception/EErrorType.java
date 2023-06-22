@@ -28,6 +28,7 @@ public enum EErrorType {
     EMAIL_ALREADY_TAKEN(3000,"Email already taken", BAD_REQUEST),
     USER_NOT_ACTIVE(1105,"User not active", BAD_REQUEST),
     PERSONAL_NOT_EXIST(1105,"Personal not exist", BAD_REQUEST),
+    LOGIN_ERROR_USERNAME_PASSWORD(1102,"Username or Password are incorrect", BAD_REQUEST),
 
 
 
