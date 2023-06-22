@@ -9,6 +9,7 @@ public class EndPoints {
     public static final String API = "/api";
 
     public static final String CREDIT = API+VERSION+"/credit";
+    public static final String TRANSFER = API+VERSION+"/transfer";
     public static final String SAVE = "/save";
     public static final String UPDATE = "/update";
     public static final String DELETE = "/delete";

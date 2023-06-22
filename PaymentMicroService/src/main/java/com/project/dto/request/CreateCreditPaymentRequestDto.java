@@ -16,4 +16,5 @@ public class CreateCreditPaymentRequestDto {
     private String expiry;
     private Long customerId;
     private String creditType;
+    private Long accountNo;
 }
