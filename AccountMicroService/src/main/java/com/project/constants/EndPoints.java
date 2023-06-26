@@ -12,6 +12,7 @@ public class EndPoints {
     public static final String SAVE = "/save";
     public static final String UPDATE = "/update";
     public static final String DELETE = "/delete";
+    public static final String BLOKE = "/blokeaccount";
     public static final String FINDALL = "/getall";
     public static final String CUSTOMERINFO = "/customerinfo";
     public static final String CONFIRM = "/confirm";

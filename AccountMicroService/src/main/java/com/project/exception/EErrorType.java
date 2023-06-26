@@ -27,10 +27,11 @@ public enum EErrorType {
     EMAIL_ALREADY_TAKEN(3000,"Email already taken", BAD_REQUEST),
     USER_NOT_ACTIVE(1105,"User not active", BAD_REQUEST),
     PERSONAL_NOT_EXIST(1106,"Personal not exist", BAD_REQUEST),
-    CUSTOMER_NOT_EXIST(1107,"Customer not exist", BAD_REQUEST),
-    CREDIT_NOT_EXIST(1108,"Credit not exist", BAD_REQUEST),
-    TRANSFER_NOT_EXIST(1109,"Transfer not exist", BAD_REQUEST),
-    PENDING_STATUS_ERROR(1109,"This credit is currently not pending", BAD_REQUEST),
+    ACCOUNT_NOT_EXIST(1107,"Account not exist", BAD_REQUEST),
+    CUSTOMER_NOT_EXIST(1108,"Customer not exist", BAD_REQUEST),
+    CREDIT_NOT_EXIST(1109,"Credit not exist", BAD_REQUEST),
+    TRANSFER_NOT_EXIST(1110,"Transfer not exist", BAD_REQUEST),
+    PENDING_STATUS_ERROR(1111,"This credit is currently not pending", BAD_REQUEST),
 
 
 
