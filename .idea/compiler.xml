@@ -11,6 +11,7 @@
         <module name="BTABank.CustomerService.main" />
         <module name="BTABank.ApiGatewayService.main" />
         <module name="BTABank.ConfigServerGit.main" />
+        <module name="BTABank.AccountMicroService.main" />
         <module name="BTABank.PaymentMicroService.main" />
         <module name="BTABank.MailModelService.main" />
         <module name="BTABank.AuthMicroService.main" />

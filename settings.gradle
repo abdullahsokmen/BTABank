@@ -10,4 +10,5 @@ include 'PaymentMicroService'
 include 'ConfigServerGit'
 include 'ConfigServerGit'
 include 'ApiGatewayService'
+include 'AccountMicroService'
 
