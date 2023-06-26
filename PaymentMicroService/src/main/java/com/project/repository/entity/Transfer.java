@@ -5,12 +5,13 @@ import com.project.repository.enums.ECreditStatus;
 import com.project.repository.enums.ETransferStatus;
 import com.project.repository.enums.ETransferType;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

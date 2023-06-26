@@ -1,4 +1,4 @@
-package com.project.security;
+package com.project.config.security;
 import com.project.exception.EErrorType;
 import com.project.exception.AccountServiceException;
 import com.project.utility.JwtTokenManager;
