@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.dto.request.CreateAccountRequestDto;
 import com.project.dto.request.UpdateAccountRequestDto;
+import com.project.dto.response.AccountDetailsResponseDto;
 import com.project.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +31,9 @@ public class AccountController {
     @PostMapping(BLOKE)
     public ResponseEntity<Boolean>blokeAccount(@RequestParam Long id){
         return ResponseEntity.ok(accountService.blokeAccount(id));
+    }
+    @GetMapping(GETACCOUNTDETAILS)
+    public ResponseEntity<AccountDetailsResponseDto>getAccountDetails(@RequestParam Long id){
+        return ResponseEntity.ok(accountService.getAccountDetails(id));
     }
 }

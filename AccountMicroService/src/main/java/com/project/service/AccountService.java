@@ -2,6 +2,7 @@ package com.project.service;
 
 import com.project.dto.request.CreateAccountRequestDto;
 import com.project.dto.request.UpdateAccountRequestDto;
+import com.project.dto.response.AccountDetailsResponseDto;
 import com.project.dto.response.CustomerInfoResponseDto;
 import com.project.exception.AccountServiceException;
 import com.project.exception.EErrorType;
@@ -69,5 +70,19 @@ public class AccountService extends ServiceManager<Account,Long> {
         account.get().setStatus(EAccountStatus.BLOKED);
         update(account.get());
         return true;
+    }
+
+    public AccountDetailsResponseDto getAccountDetails(Long id) {
+        Optional<Account>account=findById(id);
+        if (account.isEmpty())
+            throw new AccountServiceException(EErrorType.ACCOUNT_NOT_EXIST);
+        return AccountDetailsResponseDto.builder()
+                .customerName(account.get().getCustomerName())
+                .customerLastname(account.get().getCustomerLastname())
+                .customerId(account.get().getCustomerId())
+                .accountNo(account.get().getAccountNo())
+                .balance(account.get().getBalance())
+                .creditDept(account.get().getCreditDept())
+                .build();
     }
 }
