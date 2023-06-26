@@ -25,5 +25,9 @@ public class FallbackController {
     public ResponseEntity<String>fallbackPersonal(){
         return ResponseEntity.ok("Personal service currently unavalible");
     }
+    @GetMapping("/accountservice")
+    public ResponseEntity<String>fallbackAccount(){
+        return ResponseEntity.ok("Account service currently unavalible");
+    }
 
 }
