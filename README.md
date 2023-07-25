@@ -18,6 +18,13 @@ The BTABank project utilizes the following technologies:
 - Swagger: Framework for designing, building, documenting, and consuming RESTful APIs.
 - JWT-Auth: Authentication mechanism using JSON Web Tokens.
 
+## Functions
+
+1. Account Management
+2. Customer Management
+3. Payment Management
+4. Personnel Management
+
 ## Installation and Setup
 
 To set up the BTABank project locally, follow these steps:
@@ -27,12 +34,7 @@ To set up the BTABank project locally, follow these steps:
 3. Configure the application properties, including database connections and API keys.
 4. Build and run the project: `<build-command>`
 
-## Functions
 
-1. Account Management
-2. Customer Management
-3. Payment Management
-4. Personnel Management
 
 
 
